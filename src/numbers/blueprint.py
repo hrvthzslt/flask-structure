@@ -1,6 +1,7 @@
 from flask import Blueprint
 
-from numbers import service
+from src.numbers import service
+
 
 numbers_blueprint = Blueprint(
     "number_blueprint",
@@ -8,16 +9,13 @@ numbers_blueprint = Blueprint(
     template_folder="templates",
 )
 
-numbers = []
-
 
 @numbers_blueprint.route("/", methods=["GET"])
 def list() -> tuple:
-    service.get_number_list()
-    return {"numbers": numbers}, 200
+    return {"numbers": service.list_numbers()}, 200
 
 
 @numbers_blueprint.route("/<number>", methods=["POST", "GET"])
 def add(number: int) -> tuple:
-    numbers.append(number)
-    return {"numbers": numbers}, 201
+    service.add_number(number)
+    return {"numbers": service.list_numbers()}, 201
