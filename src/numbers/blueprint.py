@@ -5,7 +5,6 @@ from src.numbers import controller
 numbers_blueprint = Blueprint(
     "number_blueprint",
     __name__,
-    template_folder="templates",
 )
 
 numbers_blueprint.add_url_rule("/", view_func=controller.list_numbers, methods=["GET"])

@@ -5,7 +5,6 @@ from src.letters import controller
 letters_blueprint = Blueprint(
     "letter_blueprint",
     __name__,
-    template_folder="templates",
 )
 
 letters_blueprint.add_url_rule("/", view_func=controller.list_letters, methods=["GET"])
