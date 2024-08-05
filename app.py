@@ -1,7 +1,9 @@
 from flask import Flask
+from src.numbers.blueprint import numbers_blueprint
 
 
 app = Flask(__name__)
+app.register_blueprint(numbers_blueprint, url_prefix="/numbers")
 
 
 @app.route("/")
