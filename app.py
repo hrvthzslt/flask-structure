@@ -1,9 +1,11 @@
 from flask import Flask
 from src.numbers.blueprint import numbers_blueprint
+from src.letters.blueprint import letters_blueprint
 
 
 app = Flask(__name__)
 app.register_blueprint(numbers_blueprint, url_prefix="/numbers")
+app.register_blueprint(letters_blueprint, url_prefix="/letters")
 
 
 @app.route("/")

@@ -59,3 +59,7 @@ dev-format-check: # Check the code format using black
 .PHONY: dev-lint
 dev-lint: # Lint the code using ruff
 	$(PYTHON) -m ruff check .
+
+.PHONY: tree
+tree: # Show project structure
+	tree -I "venv|__pycache__"

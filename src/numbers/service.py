@@ -8,7 +8,7 @@ numbers = []
 def validate_input(number: Any) -> int:
     valid = number.isdigit()
     if not valid:
-        raise ValueError("Invalid input")
+        raise ValueError("Input is not a number.")
     return int(number)
 
 
