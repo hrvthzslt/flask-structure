@@ -1,7 +1,6 @@
 from flask import Blueprint
 
-from src.numbers import service
-
+from src.numbers import controller
 
 numbers_blueprint = Blueprint(
     "number_blueprint",
@@ -9,18 +8,10 @@ numbers_blueprint = Blueprint(
     template_folder="templates",
 )
 
+numbers_blueprint.add_url_rule("/", view_func=controller.list_numbers, methods=["GET"])
 
-@numbers_blueprint.route("/", methods=["GET"])
-def list() -> tuple:
-    return {"numbers": service.list_numbers()}, 200
+numbers_blueprint.add_url_rule(
+    "/<number>", view_func=controller.add_number, methods=["GET"]
+)
 
-
-@numbers_blueprint.route("/<number>", methods=["POST", "GET"])
-def add(number: int) -> tuple:
-    service.add_number(number)
-    return {"numbers": service.list_numbers()}, 201
-
-
-@numbers_blueprint.errorhandler(ValueError)
-def handle_value_error(error: ValueError) -> tuple:
-    return {"error": str(error)}, 400
+numbers_blueprint.register_error_handler(ValueError, controller.handle_value_error)

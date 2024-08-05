@@ -2,7 +2,6 @@ from typing import Any
 
 from src.numbers import repository
 
-
 numbers = []
 
 
