@@ -19,3 +19,8 @@ def list() -> tuple:
 def add(number: int) -> tuple:
     service.add_number(number)
     return {"numbers": service.list_numbers()}, 201
+
+
+@numbers_blueprint.errorhandler(ValueError)
+def handle_value_error(error: ValueError) -> tuple:
+    return {"error": str(error)}, 400
