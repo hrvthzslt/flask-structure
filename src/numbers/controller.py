@@ -1,6 +1,8 @@
+from src.infrastructure.cache import cache
 from src.numbers import service
 
 
+@cache.cached(timeout=1)
 def list_numbers() -> tuple:
     return {"numbers": service.list_numbers()}, 200
 
