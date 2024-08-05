@@ -1,5 +1,7 @@
 from typing import Any
 
+from src.numbers import repository
+
 
 numbers = []
 
@@ -11,10 +13,9 @@ def validate_input(number: Any) -> int:
     return int(number)
 
 
-
-def list_numbers() -> list:
-    return numbers
+def list_numbers() -> repository.NumberList:
+    return repository.list_numbers()
 
 
 def add_number(number: int) -> None:
-    numbers.append(validate_input(number))
+    repository.add_number(validate_input(number))
