@@ -1,4 +1,4 @@
-# Flash project structure example shoot from the hip
+# Flask project structure example shoot from the hip
 
 Example for separating parts of a flask project for better maintainability and scalability.
 
