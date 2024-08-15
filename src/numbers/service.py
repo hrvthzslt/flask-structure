@@ -2,8 +2,6 @@ from typing import Any
 
 from src.numbers import repository
 
-numbers = []
-
 
 def validate_input(number: Any) -> int:
     valid = number.isdigit()

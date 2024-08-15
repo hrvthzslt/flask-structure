@@ -1,7 +1,5 @@
 from src.letters import repository
 
-letters = []
-
 
 def validate_input(letter: str) -> str:
     valid = letter.isalnum()
