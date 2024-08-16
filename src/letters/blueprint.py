@@ -10,7 +10,7 @@ letters_blueprint = Blueprint(
 letters_blueprint.add_url_rule("/", view_func=controller.list_letters, methods=["GET"])
 
 letters_blueprint.add_url_rule(
-    "/<letter>", view_func=controller.add_letter, methods=["GET"]
+    "/<letter>", view_func=controller.add_letter, methods=["POST"]
 )
 
 letters_blueprint.register_error_handler(ValueError, controller.handle_value_error)
