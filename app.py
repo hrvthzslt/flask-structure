@@ -1,5 +1,5 @@
 from flask import Flask
-from src.infrastructure.cache import cache
+from src.common.infrastructure.cache import cache
 from src.welcome.blueprint import welcome_blueprint
 from src.numbers.blueprint import numbers_blueprint
 from src.letters.blueprint import letters_blueprint
