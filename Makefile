@@ -63,3 +63,11 @@ dev-lint: # Lint the code using ruff
 .PHONY: tree
 tree: # Show project structure
 	tree -I "venv|__pycache__"
+
+.PHONY: test
+test: # Test endpoints with curl
+	curl -X POST http://127.0.0.1:5000/numbers/42
+	curl -X POST http://127.0.0.1:5000/numbers/43
+	curl -X POST http://127.0.0.1:5000/letters/word
+	curl -X POST http://127.0.0.1:5000/letters/42
+	curl -X GET http://127.0.0.1:5000/unique/
