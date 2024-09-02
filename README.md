@@ -49,8 +49,9 @@ The whole thing is sort of silly, but it is a good example for a project structu
 ├── README.md
 ├── requirements.txt
 └── src
-    ├── infrastructure
-    │   └── cache.py
+    ├── common
+    │   └── infrastructure
+    │       └── cache.py
     ├── letters
     │   ├── blueprint.py
     │   ├── controller.py
@@ -66,6 +67,11 @@ The whole thing is sort of silly, but it is a good example for a project structu
     │   └── service
     │       ├── numbers_service.py
     │       └── validator.py
+    ├── unique
+    │   ├── adapter.py
+    │   ├── blueprint.py
+    │   ├── controller.py
+    │   └── service.py
     └── welcome
         ├── blueprint.py
         ├── controller.py
@@ -77,7 +83,7 @@ The whole thing is sort of silly, but it is a good example for a project structu
 - `letters` - Package for handling letters. Contains a blueprint, controller, repository and service modules.
 - `numbers` - Package for handling numbers. Contains a blueprint, controller, repository and service modules.
 - `welcome` - Package for handling the welcome page. Contains a blueprint and controller and it has a template for the index page.
-- `infrastructure` - Package for handling infrastructure related things. Contains a cache module.
+- `common` - Package for handling project wide needs for example infrastructure related things. Contains a cache module.
 
 ## Building blocks
 
@@ -87,6 +93,7 @@ This is a basic example for a layered structure, where the building blocks are s
 - `Controller` - Handles the request and response.
 - `Service` - Handles the business logic.
 - `Repository` - Handles the database operations.
+- `Adapter` - Handles the external domain operations.
 
 Usual relation between building blocks: `Blueprint` <- `Controller` <- `Service` <- `Repository`
 
@@ -99,6 +106,12 @@ This statement is true for flask tools as well, `welcome` package has templates,
 **Split up the fat!**
 
 When a module gets too big, it can be split into multiple modules under a package. The `numbers` controller is splat into multiple controllers, an `add_controller` and a `list_controller`, and the `error_handler` is moved to a separated module. The service module is splat into multiple services, for example a `numbers_service` and a `validator`.
+
+**Beware of where you connect!**
+
+If there is a need for a functionality project wide, it should be in the `common` package. For example a cache module, that is used by multiple services.
+
+For another domain's functionality, use an adapter. For example the `unique` package has an adapter, that uses the `numbers` and `letters` services, for creating a unique list of all the values. If there is a need for a type from another domain, I personally would not a transformation without meaningful change, but you do you.
 
 ## The moral
 

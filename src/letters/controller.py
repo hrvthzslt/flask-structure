@@ -1,4 +1,4 @@
-from src.infrastructure.cache import cache
+from src.common.infrastructure.cache import cache
 from src.letters import service
 
 
