@@ -44,10 +44,6 @@ The whole thing is sort of silly, but it is a good example for a project structu
 ```shell
 .
 ├── app.py
-├── Dockerfile
-├── Makefile
-├── README.md
-├── requirements.txt
 └── src
     ├── common
     │   └── infrastructure
@@ -111,7 +107,9 @@ When a module gets too big, it can be split into multiple modules under a packag
 
 If there is a need for a functionality project wide, it should be in the `common` package. For example a cache module, that is used by multiple services.
 
-For another domain's functionality, use an adapter. For example the `unique` package has an adapter, that uses the `numbers` and `letters` services, for creating a unique list of all the values. If there is a need for a type from another domain, I personally would not a transformation without meaningful change, but you do you.
+For another domain's functionality, use an adapter. For example the `unique` package has an adapter, that uses the `numbers` and `letters` services, for creating a unique list of all the values. The only place where to domains **functionality** can meet is the adapter.
+
+If there is a need for a type from another domain, I personally would not a do transformation in the adapter layer without meaningful change, but you do you.
 
 ## The moral
 
