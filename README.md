@@ -121,16 +121,16 @@ The names of your building blocks doesn't matter, if you think layered structure
 
 ## Running the application
 
-### Local interpreter
-
-```shell
-make dev-build dev-run
-```
-
-### Docker
+Build and run
 
 ```shell
 make build run
+```
+
+Test endpoints
+
+```shell
+make test
 ```
 
 Stopping the application, and removing the container:
@@ -140,14 +140,6 @@ make stop clean
 ```
 
 ## Quality check
-
-### Local interpreter
-
-```shell
-make dev-format dev-lint
-```
-
-### Docker
 
 ```shell
 make format-check lint

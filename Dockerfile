@@ -1,9 +1,10 @@
 FROM python:3.10-slim
 
+COPY --from=ghcr.io/astral-sh/uv:0.6 /uv /uvx /bin/
+
 COPY . /app
 
-RUN pip3 install --upgrade pip
-RUN pip3 install -r /app/requirements.txt
+RUN uv pip install --system -r /app/requirements.txt
 
 WORKDIR /app
 
